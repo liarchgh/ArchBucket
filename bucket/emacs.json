@@ -1,13 +1,13 @@
 {
-    "version": "28.0.91",
+    "version": "28.0.92",
     "description": "An extensible, customizable, free/libre text editor.",
     "homepage": "https://www.gnu.org/software/emacs/",
     "license": "GPL-3.0-or-later",
     "architecture": {
         "64bit": {
-            "url": "https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-28/emacs-28.0.91.zip",
-            "hash": "43fccd19a8e0362a2506b4796530001549049501e7425c12cb3d82fb1e211a6c"
-        },
+            "url": "https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-28/emacs-28.0.92.zip",
+            "hash": "b5e087186b86a8a184e233e1bcf0da4d27d9df5cb1d5ecd949fd6a5a9235136f"
+        }
     },
     "bin": [
         "bin\\runemacs.exe",
@@ -27,12 +27,15 @@
             "-c -n -a \"\""
         ]
     ],
-    "checkver": "Emacs ([\\d.]+)",
+    "checkver": {
+        "url": "https://github.com/emacs-mirror/emacs/tags",
+        "regex": "Emacs ([\\d.]+)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-$majorVersion/emacs-$version.zip",
-            },
+                "url": "https://alpha.gnu.org/gnu/emacs/pretest/windows/emacs-$majorVersion/emacs-$version.zip"
+            }
         }
     }
 }
