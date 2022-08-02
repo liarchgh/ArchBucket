@@ -1,0 +1,33 @@
+{
+    "homepage": "https://airtest.netease.com",
+    "description": "Cross platform UI automation IDE",
+    "version": "1.2.13",
+    "url": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.zip",
+    "hash": "",
+    "checkver": {
+        "url": "https://airtest.netease.com/changelog.html",
+        "regex": "<a data-offset=\"100\" class=\"nav-link\" href=[^>]*>([^<]*)</a>"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://airtest.netease.com/download.html?download=win64/AirtestIDE-win-$version.zip&&site=io",
+                "extract_dir": "AirtestIDE-win64-$version"
+            },
+            "32bit": {
+                "url": "https://airtest.netease.com/download.html?download=win32/AirtestIDE-win-$version.zip&&site=io",
+                "extract_dir": "AirtestIDE-win32-$version"
+            }
+        }
+    },
+    "shortcuts": [
+        [
+            "AirtestIDE.exe",
+            "AirtestIDE"
+        ],
+        [
+            "兼容模式启动.bat",
+            "AirtestIDE-兼容模式启动"
+        ]
+    ]
+}
