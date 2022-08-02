@@ -31,11 +31,11 @@
     },
     "shortcuts": [
         [
-            "AirtestIDE.exe",
+            "AirtestIDE/AirtestIDE.exe",
             "AirtestIDE"
         ],
         [
-            "兼容模式启动.bat",
+            "AirtestIDE/兼容模式启动.bat",
             "AirtestIDE-兼容模式启动"
         ]
     ]
