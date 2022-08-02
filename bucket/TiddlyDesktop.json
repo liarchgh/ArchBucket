@@ -1,15 +1,15 @@
 {
     "homepage": "https://github.com/Jermolene/TiddlyDesktop",
     "license": "unknown",
-    "version": "0.0.14",
+    "version": "v0.0.15-prerelease.3",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/v0.0.14/tiddlydesktop-win64-v0.0.14.zip",
+            "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/v0.0.15-prerelease.3/tiddlydesktop-win64-v0.0.15-prerelease.2.zip",
             "hash": "32547c47c25d28050b5a9f872b974963af9c73e2e993b12f56e5ef19aa2dfffb",
             "extract_dir": "TiddlyDesktop-win64-v0.0.14"
         },
         "32bit": {
-            "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/v0.0.14/tiddlydesktop-win32-v0.0.14.zip",
+            "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/v0.0.15-prerelease.3/tiddlydesktop-win32-v0.0.15-prerelease.2.zip",
             "hash": "dd7434ce30e5bb774affb1be5f0dac4d53e41f72a6e81fece470d06c08fc6fa8",
             "extract_dir": "TiddlyDesktop-win32-v0.0.14"
         }
@@ -26,16 +26,19 @@
             "Tiddly Desktop"
         ]
     ],
-    "checkver": "github",
+    "checkver": {
+        "url": "https://github.com/TiddlyWiki/TiddlyDesktop/tags",
+        "regex": "/TiddlyWiki/TiddlyDesktop/releases/tag/([^\"]*)"
+    },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/v$version/tiddlydesktop-win64-v$version.zip",
-                "extract_dir": "TiddlyDesktop-win64-v$version"
+                "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/$version/tiddlydesktop-win64-$version.zip",
+                "extract_dir": "TiddlyDesktop-win64-$version"
             },
             "32bit": {
-                "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/v$version/tiddlydesktop-win32-v$version.zip",
-                "extract_dir": "TiddlyDesktop-win32-v$version"
+                "url": "https://github.com/Jermolene/TiddlyDesktop/releases/download/$version/tiddlydesktop-win32-$version.zip",
+                "extract_dir": "TiddlyDesktop-win32-$version"
             }
         }
     }
