@@ -11,11 +11,11 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://airtest.netease.com/download.html?download=win64/AirtestIDE-win-$version.zip&&site=io",
+                "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-$version.zip",
                 "extract_dir": "AirtestIDE-win64-$version"
             },
             "32bit": {
-                "url": "https://airtest.netease.com/download.html?download=win32/AirtestIDE-win-$version.zip&&site=io",
+                "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-$version.zip",
                 "extract_dir": "AirtestIDE-win32-$version"
             }
         }
