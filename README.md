@@ -4,8 +4,9 @@
 
 Personal scoop bucket
 
-# list
+# Update
 
-- emacs
-
-    Official website's version is too old that is only 27. This one is emacs 28.
+```powershell
+cd bucket
+..\bin\checkAndPush.ps1 app_name
+```
