@@ -2,7 +2,16 @@
     "homepage": "https://airtest.netease.com",
     "description": "Cross platform UI automation IDE",
     "version": "1.2.13",
-    "url": "https://github.com/BluePointLilac/ContextMenuManager/releases/download/3.3.3.1/ContextMenuManager.zip",
+    "architecture": {
+        "64bit": {
+            "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.13.zip",
+            "hash": "bd9c054ad282d9662ee995440b8e29e316ebba50770db695908b4d79a7ec2cc0"
+        },
+        "32bit": {
+            "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.13.zip",
+            "hash": "a607f4c5a3b757551d79a1c06912373145c259c2f2e1527f132b21700086d63c"
+        }
+    },
     "hash": "",
     "checkver": {
         "url": "https://airtest.netease.com/changelog.html",
