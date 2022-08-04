@@ -27,8 +27,7 @@
         ]
     ],
     "checkver": {
-        "url": "https://github.com/TiddlyWiki/TiddlyDesktop/tags",
-        "regex": "/TiddlyWiki/TiddlyDesktop/releases/tag/([^\"]*)"
+        "github": "https://github.com/TiddlyWiki/TiddlyDesktop/tags"
     },
     "autoupdate": {
         "architecture": {

@@ -10,3 +10,7 @@ Personal scoop bucket
 cd bucket
 ..\bin\checkAndPush.ps1 app_name
 ```
+# Refs
+
+[App-Manifests|Scoop](https://scoop-docs.vercel.app/docs/concepts/App-Manifests.html#a-simple-example)
+
