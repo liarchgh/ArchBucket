@@ -15,8 +15,7 @@
     "hash": "",
     "shortcuts": [
         [
-            "KeymouseGo.exe",
-            "KeymouseGo"
+            "KeymouseGo_v$version-win32.exe",
         ]
     ],
     "persist": "scripts",
