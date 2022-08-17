@@ -1,6 +1,6 @@
 {
     "homepage": "https://github.com/taojy123/KeymouseGo/",
-    "description": "KeymouseGo",
+    "description": "类似按键精灵的鼠标键盘录制和自动化操作 模拟点击和键入 | automate mouse clicks and keyboard input",
     "version": "5.0",
     "architecture": {
         "64bit": {
