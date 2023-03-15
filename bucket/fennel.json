@@ -17,8 +17,5 @@
     },
     "autoupdate": {
         "url": "https://fennel-lang.org/downloads/fennel-$version-windows32.exe",
-        "hash": {
-            "url": "https://fennel-lang.org/downloads/fennel-$version-windows32.exe.asc",
-        },
     }
 }
