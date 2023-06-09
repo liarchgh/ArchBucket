@@ -1,17 +1,17 @@
 {
-    "version": "2.1.0",
+    "version": "3.1.2",
     "description": "🌠 Manage your shell commands.",
     "homepage": "https://github.com/Nukesor/pueue",
     "license": "MIT",
     "architecture": {
         "64bit": {
             "url": [
-                "https://github.com/Nukesor/pueue/releases/download/v2.1.0/pueue-windows-x86_64.exe",
-                "https://github.com/Nukesor/pueue/releases/download/v2.1.0/pueued-windows-x86_64.exe"
+                "https://github.com/Nukesor/pueue/releases/download/v3.1.2/pueue-windows-x86_64.exe",
+                "https://github.com/Nukesor/pueue/releases/download/v3.1.2/pueued-windows-x86_64.exe"
             ],
             "hash": [
-                "74379c103e8850d19b5ac1397647c078709d722944ec4cb4af9214f0cf0acdea",
-                "1f17dda8cf381a4cade473b23497d44b8462c9060153f4c36465695c356428ac"
+                "c1a7bb53be7abba6249933edb5b274f215e0abd532097c3d2b7464fdccae0e95",
+                "0b92dea7ddf68f589b2800e8125e654a9e27303b56e42743af1ebfda0257a14b"
             ]
         }
     },
