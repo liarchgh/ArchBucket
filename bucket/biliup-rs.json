@@ -1,0 +1,26 @@
+{
+    "##": "This file is a template. Fill the blanks and add or remove fields as necessary.",
+    "version": "",
+    "description": "命令行投稿(B站)和视频下载工具，提供多种登录方式，支持多p。 ",
+    "homepage": "https://github.com/biliup/biliup-rs",
+    "license": "MIT license ",
+    "notes": "",
+    "architecture": {
+        "64bit": {
+            "url": "",
+            "hash": ""
+        }
+    },
+    "bin": "biliup.exe",
+    "checkver": {
+        "url": "https://github.com/biliup/biliup-rs/releases",
+        "regex": "/biliup/biliup-rs/releases/tag/([^\"]*)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/biliup/biliup-rs/releases/download/$version/biliupR-$version-x86_64-windows.zip"
+            }
+        }
+    }
+}
