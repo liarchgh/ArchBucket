@@ -19,7 +19,8 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/biliup/biliup-rs/releases/download/$version/biliupR-$version-x86_64-windows.zip"
+                "url": "https://github.com/biliup/biliup-rs/releases/download/$version/biliupR-$version-x86_64-windows.zip",
+                "extract_dir": "biliupR-$version-x86_64-windows"
             }
         }
     }
