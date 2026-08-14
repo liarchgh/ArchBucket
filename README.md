@@ -20,6 +20,7 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 | AirtestIDE | `scoop install Arch/AirtestIDE` | 跨平台 UI 自动化测试 IDE（Airtest 官方） | 维护中（新版 1.2.17 待自动更新） |
 | biliup-rs | `scoop install Arch/biliup-rs` | B站命令行投稿（支持多P）与视频下载工具 | 已归档 |
 | ContextMenuManager | `scoop install Arch/ContextMenuManager` | Windows 右键菜单管理程序 | 停滞（2024-08 后无更新） |
+| enso-open-source | `scoop install Arch/enso-open-source` | A feature-rich descendant of Enso Community Edition. | 维护中 |
 | fennel | `scoop install Arch/fennel` | 一种 Lisp 方言编程语言，编译为 Lua | 维护中 |
 | ghc | `scoop install Arch/ghc` | Haskell 函数式语言编译器与交互环境 | 维护中（新版 9.12.4 待自动更新） |
 | keymousego | `scoop install Arch/keymousego` | 鼠标键盘录制与自动化操作（类似按键精灵） | 维护中 |
