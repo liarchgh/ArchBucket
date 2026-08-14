@@ -1,4 +1,4 @@
-﻿#Requires -Version 5.1
+#Requires -Version 5.1
 <#
 .SYNOPSIS
     Check all bucket manifests for broken download URLs, stale versions, and upstream maintenance status.
@@ -7,13 +7,15 @@
     For each manifest under <bucket>/:
       - HEAD-checks every download URL (top-level "url" and each "architecture.*.url").
       - Runs checkver ("github" style or url+regex/re) to find the latest upstream version.
-      - Fetches GitHub repo metadata (archived, last push, latest release) when the homepage is a
-        GitHub repo, and classifies upstream as active / dormant / archived.
+      - Fetches GitHub repo metadata (archived, last push, latest release) when the homepage or
+        checkver.url is a GitHub repo, and classifies upstream as active / dormant / archived.
     Prints a per-app table and a summary, and exits 1 if any URL is broken or any manifest is stale.
+    With -UpdateReadme, regenerates the "<!-- STATUS:START --> ... <!-- STATUS:END -->" block in
+    README.md. Chinese status strings are loaded from status-cn.json so this script stays pure ASCII.
 
 .EXAMPLE
     powershell -File scripts\check-health.ps1
-    powershell -File scripts\check-health.ps1 -BucketDir .\bucket
+    powershell -File scripts\check-health.ps1 -UpdateReadme
 
 .NOTES
     Uses the unauthenticated GitHub API (60 req/hr per IP). Set GITHUB_TOKEN to raise the limit:
@@ -27,6 +29,10 @@ param(
 
 if (-not $BucketDir) { $BucketDir = Join-Path $PSScriptRoot '..\bucket' }
 $BucketDir = (Resolve-Path $BucketDir).Path
+
+# Chinese UI strings live in status-cn.json (UTF-8) so this script stays pure ASCII (no BOM).
+$stringsPath = Join-Path $PSScriptRoot 'status-cn.json'
+$S = Get-Content $stringsPath -Raw -Encoding UTF8 | ConvertFrom-Json
 
 $ErrorActionPreference = 'Stop'
 $Today = Get-Date
@@ -123,7 +129,8 @@ function Compare-Versions {
 
 function Update-Readme {
     # Regenerates the "<!-- STATUS:START --> ... <!-- STATUS:END -->" block in the repo README
-    # from the health-check results. Reuses existing 用途 text per app to preserve curation.
+    # from the health-check results. Reuses existing description text per app to preserve curation,
+    # and keeps the last-known status when the upstream status could not be resolved.
     param($Results)
     $readmePath = Join-Path $PSScriptRoot '..\README.md'
     if (-not (Test-Path $readmePath)) { Write-Warning "README not found: $readmePath"; return }
@@ -138,7 +145,7 @@ function Update-Readme {
         return
     }
 
-    # Preserve the curated 用途 column and last-known status from the existing table, keyed by app name.
+    # Preserve the curated description column and last-known status from the existing table, keyed by app name.
     $existingDesc = @{}
     $existingStatus = @{}
     $block = $raw.Substring($si + $startMarker.Length, $ei - $si - $startMarker.Length)
@@ -146,7 +153,7 @@ function Update-Readme {
         $t = $line.Trim()
         if ($t.StartsWith('|') -and $t -notmatch '\| *--- *\|') {
             $cells = $t.Trim('|').Split('|') | ForEach-Object { $_.Trim() }
-            if ($cells.Count -ge 4 -and $cells[0] -ne '软件') {
+            if ($cells.Count -ge 4 -and $cells[0] -ne $S.col_app) {
                 $existingDesc[$cells[0]] = $cells[2]
                 $existingStatus[$cells[0]] = $cells[3]
             }
@@ -156,9 +163,9 @@ function Update-Readme {
     $today = (Get-Date).ToString('yyyy-MM-dd')
     $lines = New-Object System.Collections.Generic.List[string]
     $lines.Add($startMarker)
-    $lines.Add("> 维护状态于 $today 检查。")
+    $lines.Add("> $($S.checked_on)$today$($S.checked_on_suffix)")
     $lines.Add('')
-    $lines.Add('| 软件 | 安装命令 | 用途 | 维护状态 |')
+    $lines.Add("| $($S.col_app) | $($S.col_install) | $($S.col_desc) | $($S.col_status) |")
     $lines.Add('| --- | --- | --- | --- |')
     foreach ($r in ($Results | Sort-Object App)) {
         $desc = if ($existingDesc.ContainsKey($r.App)) { $existingDesc[$r.App] } else { $r.Desc }
@@ -217,6 +224,7 @@ Get-ChildItem (Join-Path $BucketDir '*.json') | Sort-Object Name | ForEach-Objec
     # --- upstream maintenance ---
     # Prefer homepage as the GitHub repo source; fall back to checkver.url for non-GitHub homepages.
     $status = 'n/a'
+    $repoInfo = $null
     $ghUrl = if ($m.homepage -match 'github\.com/([^/]+)/([^/]+)') { $m.homepage }
              elseif ($m.checkver.url -match 'github\.com/([^/]+)/([^/]+)') { [string]$m.checkver.url }
              else { $null }
@@ -246,10 +254,10 @@ Get-ChildItem (Join-Path $BucketDir '*.json') | Sort-Object Name | ForEach-Objec
                   else { $null }
     $lastActiveShort = if ($lastActive) { $lastActive.ToString('yyyy-MM') } else { $null }
     $statusCn = switch ($status) {
-        'archived' { '已归档' }
-        'dormant'  { if ($lastActiveShort) { "停滞（$lastActiveShort 后无更新）" } else { '停滞（长期无更新）' } }
-        'active'   { if ($upToDate -eq $false) { "维护中（新版 $latest 待自动更新）" } else { '维护中' } }
-        default    { if ($upToDate -eq $false) { "维护中（新版 $latest 待自动更新）" } else { '未知' } }
+        'archived' { $S.archived }
+        'dormant'  { if ($lastActiveShort) { "$($S.dormant_prefix)$lastActiveShort$($S.dormant_suffix)" } else { $S.dormant_unknown } }
+        'active'   { if ($upToDate -eq $false) { "$($S.active_stale_prefix)$latest$($S.active_stale_suffix)" } else { $S.active } }
+        default    { if ($upToDate -eq $false) { "$($S.active_stale_prefix)$latest$($S.active_stale_suffix)" } else { $S.unknown } }
     }
 
     [pscustomobject]@{

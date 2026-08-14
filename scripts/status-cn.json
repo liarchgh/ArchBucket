@@ -1,0 +1,16 @@
+{
+    "col_app": "软件",
+    "col_install": "安装命令",
+    "col_desc": "用途",
+    "col_status": "维护状态",
+    "checked_on": "维护状态于 ",
+    "checked_on_suffix": " 检查。",
+    "active": "维护中",
+    "active_stale_prefix": "维护中（新版 ",
+    "active_stale_suffix": " 待自动更新）",
+    "dormant_prefix": "停滞（",
+    "dormant_suffix": " 后无更新）",
+    "dormant_unknown": "停滞（长期无更新）",
+    "archived": "已归档",
+    "unknown": "未知"
+}

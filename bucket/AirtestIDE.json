@@ -2,13 +2,13 @@
     "homepage": "https://airtest.netease.com",
     "description": "Cross platform UI automation IDE",
     "version": "1.2.15",
+    "license": "Freeware",
     "architecture": {
         "64bit": {
             "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.15.zip",
             "hash": "d8a2dcded4fc55b8bbfffc20bf82ad1992584db68a8209c1d1669c5e5e8eb4ce"
         }
     },
-    "hash": "",
     "checkver": {
         "url": "https://airtest.netease.com/changelog.html",
         "regex": "<a data-offset=\"100\" class=\"nav-link\" href=[^>]*>([^<]*)</a>"
