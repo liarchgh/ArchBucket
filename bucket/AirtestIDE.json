@@ -6,10 +6,6 @@
         "64bit": {
             "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.15.zip",
             "hash": "d8a2dcded4fc55b8bbfffc20bf82ad1992584db68a8209c1d1669c5e5e8eb4ce"
-        },
-        "32bit": {
-            "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-1.2.15.zip",
-            "hash": "f549f83e70183efc118fb88ebb9a37d4b179815c30c6722b4ad112bf0d328a2a"
         }
     },
     "hash": "",
@@ -22,10 +18,6 @@
             "64bit": {
                 "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-$version.zip",
                 "extract_dir": "AirtestIDE-win64-$version"
-            },
-            "32bit": {
-                "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win32/AirtestIDE-win-$version.zip",
-                "extract_dir": "AirtestIDE-win32-$version"
             }
         }
     },
