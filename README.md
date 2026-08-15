@@ -13,7 +13,7 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 ## 软件列表
 
 <!-- STATUS:START -->
-> 维护状态于 2026-08-14 检查。
+> 维护状态于 2026-08-15 检查。
 
 | 软件 | 安装命令 | 用途 | 维护状态 |
 | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 | ghc | `scoop install Arch/ghc` | Haskell 函数式语言编译器与交互环境 | 维护中（新版 9.12.4 待自动更新） |
 | keymousego | `scoop install Arch/keymousego` | 鼠标键盘录制与自动化操作（类似按键精灵） | 维护中 |
 | pasteex | `scoop install Arch/pasteex` | 把剪贴板内容直接粘贴为文件 | 停滞（2022-03 后无更新） |
-| vidupe | `scoop install Arch/vidupe` | 视频查重：按视频内容比对相似/重复，无视格式与压缩 | 停滞（2019-09 后无更新） |
+| vidupe | `scoop install Arch/vidupe` | 视频查重：按视频内容比对相似/重复，无视格式与压缩 | 维护中 |
 <!-- STATUS:END -->
 
 > 状态表由 `scripts/check-health.ps1 -UpdateReadme` 自动生成，GitHub Action「Update Status」定期刷新。
