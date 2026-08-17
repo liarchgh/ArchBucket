@@ -13,7 +13,7 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 ## 软件列表
 
 <!-- STATUS:START -->
-> 维护状态于 2026-08-16 检查。
+> 维护状态于 2026-08-17 检查。
 
 | 软件 | 安装命令 | 用途 | 维护状态 |
 | --- | --- | --- | --- |
