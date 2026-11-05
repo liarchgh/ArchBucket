@@ -1,12 +1,12 @@
 {
     "homepage": "https://airtest.netease.com",
     "description": "Cross platform UI automation IDE",
-    "version": "1.2.15",
+    "version": "1.2.17",
     "license": "Freeware",
     "architecture": {
         "64bit": {
-            "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.15.zip",
-            "hash": "d8a2dcded4fc55b8bbfffc20bf82ad1992584db68a8209c1d1669c5e5e8eb4ce"
+            "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-1.2.17.zip",
+            "hash": "cf750d0112a165db8d7bec4a4647a86b8cd1660305e740685553d03ad0092f95"
         }
     },
     "checkver": {
@@ -16,8 +16,7 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-$version.zip",
-                "extract_dir": "AirtestIDE-win64-$version"
+                "url": "https://airtestproject.s3.netease.com/downloads/AirtestIDE/win64/AirtestIDE-win-$version.zip"
             }
         }
     },
