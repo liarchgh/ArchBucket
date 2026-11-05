@@ -1,0 +1,27 @@
+{
+    "version": "3.2.0",
+    "description": "A high-performance, extensible application launcher and plugin platform (open-source alternative to uTools).",
+    "homepage": "https://github.com/ZToolsCenter/ZTools",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/ZToolsCenter/ZTools/releases/download/v3.2.0/ZTools-3.2.0-win-x64.zip",
+            "hash": "cfbee38dd75a139903592178baea67b827aa943b20184906d72aee2ae23456d6"
+        }
+    },
+    "bin": "ZTools.exe",
+    "shortcuts": [
+        [
+            "ZTools.exe",
+            "ZTools"
+        ]
+    ],
+    "checkver": "github",
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/ZToolsCenter/ZTools/releases/download/v$version/ZTools-$version-win-x64.zip"
+            }
+        }
+    }
+}
