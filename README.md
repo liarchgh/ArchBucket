@@ -25,6 +25,7 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 | ghc | `scoop install Arch/ghc` | Haskell 函数式语言编译器与交互环境 | 维护中 |
 | keymousego | `scoop install Arch/keymousego` | 鼠标键盘录制与自动化操作（类似按键精灵） | 维护中 |
 | pasteex | `scoop install Arch/pasteex` | 把剪贴板内容直接粘贴为文件 | 停滞（2022-03 后无更新） |
+| veracrypt | `scoop install Arch/veracrypt` | 开源磁盘加密软件（挂载需管理员权限，便携模式设置随包保留） | 维护中 |
 | vidupe | `scoop install Arch/vidupe` | 视频查重：按视频内容比对相似/重复，无视格式与压缩 | 维护中 |
 | ztools | `scoop install Arch/ztools` | uTools 的开源替代：高性能可扩展应用启动器与插件平台（Alt+Z 唤出） | 维护中 |
 <!-- STATUS:END -->

@@ -1,0 +1,76 @@
+{
+    "version": "1.26.31",
+    "description": "Free open-source disk encryption software with strong security.",
+    "homepage": "https://veracrypt.io/",
+    "license": {
+        "identifier": "Apache-2.0 AND LicenseRef-VeraCrypt",
+        "url": "https://github.com/veracrypt/VeraCrypt/blob/master/License.txt"
+    },
+    "notes": [
+        "Mounting volumes requires administrator rights: VeraCrypt loads its driver on demand.",
+        "Portable mode loads the driver from the app folder (veracrypt-x64.sys / veracrypt-arm64.sys); the MSI only ships veracrypt.sys, so it is aliased at install time.",
+        "Settings live next to VeraCrypt.exe (portable mode), so Configuration.xml / Favorite Volumes.xml / History.xml / Default Keyfiles.xml are persisted across updates."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.31/VeraCrypt_Setup_x64_1.26.31.msi",
+            "hash": "6b0dbcc1d6910ec9f045689dd29172b4ae825b5fdcdae1a2d5f1e5b692782265"
+        },
+        "arm64": {
+            "url": "https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_1.26.31/VeraCrypt_Setup_arm64_1.26.31.msi",
+            "hash": "e26bdb356e6dcca607d17c4270becee6bcad0b1eedf4916bc2551afe0b43dacb"
+        }
+    },
+    "extract_dir": "VeraCrypt",
+    "bin": [
+        [
+            "VeraCrypt.exe",
+            "veracrypt"
+        ],
+        [
+            "VeraCrypt Format.exe",
+            "veracrypt-format"
+        ],
+        [
+            "VeraCryptExpander.exe",
+            "veracrypt-expander"
+        ]
+    ],
+    "shortcuts": [
+        [
+            "VeraCrypt.exe",
+            "VeraCrypt"
+        ],
+        [
+            "VeraCrypt Format.exe",
+            "VeraCrypt Format"
+        ]
+    ],
+    "persist": [
+        "Configuration.xml",
+        "Favorite Volumes.xml",
+        "History.xml",
+        "Default Keyfiles.xml"
+    ],
+    "post_install": [
+        "$sys = Join-Path $dir 'veracrypt.sys'",
+        "$bytes = [System.IO.File]::ReadAllBytes($sys)",
+        "$machine = [BitConverter]::ToUInt16($bytes, [BitConverter]::ToInt32($bytes, 0x3C) + 4)",
+        "$alias = if ($machine -eq 0xAA64) { 'veracrypt-arm64.sys' } else { 'veracrypt-x64.sys' }",
+        "Copy-Item $sys (Join-Path $dir $alias) -Force"
+    ],
+    "checkver": {
+        "url": "https://veracrypt.io/en/Downloads.html",
+        "regex": "VeraCrypt\\.Portable\\.([\\d.]+)\\.exe"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_$version/VeraCrypt_Setup_x64_$version.msi"
+            },
+            "arm64": {
+                "url": "https://github.com/veracrypt/VeraCrypt/releases/download/VeraCrypt_$version/VeraCrypt_Setup_arm64_$version.msi"
+            }
+        }
+    }
+}
