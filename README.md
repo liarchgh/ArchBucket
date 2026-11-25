@@ -13,7 +13,7 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 ## 软件列表
 
 <!-- STATUS:START -->
-> 维护状态于 2026-11-23 检查。
+> 维护状态于 2026-11-26 检查。
 
 | 软件 | 安装命令 | 用途 | 维护状态 |
 | --- | --- | --- | --- |
@@ -22,8 +22,10 @@ scoop bucket add Arch https://github.com/liarchgh/ArchBucket
 | ContextMenuManager | `scoop install Arch/ContextMenuManager` | Windows 右键菜单管理程序 | 停滞（2024-08 后无更新） |
 | enso-open-source | `scoop install Arch/enso-open-source` | 键盘快捷启动器（Enso Community Edition 增强分支） | 维护中 |
 | fennel | `scoop install Arch/fennel` | 一种 Lisp 方言编程语言，编译为 Lua | 维护中 |
+| foundation-sunshine | `scoop install Arch/foundation-sunshine` | Moonlight 串流服务端（Foundation 分支：HDR10/HDR Vivid、虚拟显示器、独立桌面控制面板） | 未知 |
 | ghc | `scoop install Arch/ghc` | Haskell 函数式语言编译器与交互环境 | 维护中 |
 | keymousego | `scoop install Arch/keymousego` | 鼠标键盘录制与自动化操作（类似按键精灵） | 维护中 |
+| moonlight-qt | `scoop install Arch/moonlight-qt` | Moonlight 串流客户端（VPlus 分支：额外编解码器与增强特性） | 未知 |
 | pasteex | `scoop install Arch/pasteex` | 把剪贴板内容直接粘贴为文件 | 停滞（2022-03 后无更新） |
 | veracrypt | `scoop install Arch/veracrypt` | 开源磁盘加密软件（挂载需管理员权限，便携模式设置随包保留） | 维护中 |
 | vidupe | `scoop install Arch/vidupe` | 视频查重：按视频内容比对相似/重复，无视格式与压缩 | 维护中 |

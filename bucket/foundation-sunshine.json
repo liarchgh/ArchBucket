@@ -1,0 +1,41 @@
+{
+    "version": "2026.1125",
+    "description": "Self-hosted game streaming host for Moonlight (Foundation fork: HDR10/HDR Vivid, virtual displays, desktop control panel).",
+    "homepage": "https://github.com/AlkaidLab/foundation-sunshine",
+    "license": "GPL-3.0-only",
+    "notes": [
+        "This package uses the upstream portable ZIP; upstream recommends the installer for normal use, portable is meant for special cases such as running several instances.",
+        "Settings, app list and pairing data live in $dir\\config (persisted across updates).",
+        "Installing the service, the virtual display driver or the gamepad driver needs an elevated prompt; see the scripts folder.",
+        "Web manager: https://localhost:47990/ (desktop control panel: start Sunshine from the Start menu)."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/AlkaidLab/foundation-sunshine/releases/download/v2026.1125.34136.%E6%9D%82%E9%B1%BC/Sunshine.v2026.1125.Portable-x64.zip",
+            "hash": "cf885bc39b2ef25a55be778ec1b88bdc2503f94b32460c78022827769c9cd2ce"
+        }
+    },
+    "extract_dir": "Sunshine",
+    "bin": [
+        "sunshine.exe",
+        "assets\\gui\\sunshine-gui.exe"
+    ],
+    "shortcuts": [
+        [
+            "assets\\gui\\sunshine-gui.exe",
+            "Sunshine"
+        ]
+    ],
+    "persist": "config",
+    "checkver": {
+        "url": "https://api.github.com/repos/AlkaidLab/foundation-sunshine/releases/latest",
+        "regex": "\"tag_name\":\\s*\"v([0-9]{4}\\.[0-9]{4})\\.([0-9]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/AlkaidLab/foundation-sunshine/releases/download/v$version.$match2.%E6%9D%82%E9%B1%BC/Sunshine.v$version.Portable-x64.zip"
+            }
+        }
+    }
+}
