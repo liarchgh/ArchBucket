@@ -4,10 +4,10 @@
     "homepage": "https://github.com/AlkaidLab/foundation-sunshine",
     "license": "GPL-3.0-only",
     "notes": [
-        "This package uses the upstream portable ZIP; upstream recommends the installer for normal use, portable is meant for special cases such as running several instances.",
-        "Settings, app list and pairing data live in $dir\\config (persisted across updates).",
-        "Installing the service, the virtual display driver or the gamepad driver needs an elevated prompt; see the scripts folder.",
-        "Web manager: https://localhost:47990/ (desktop control panel: start Sunshine from the Start menu)."
+        "Upstream ships this host as an installer; this package unpacks the portable ZIP, which upstream recommends only for special cases such as running several instances.",
+        "Run install_portable.bat / uninstall_portable.bat from the app directory as administrator to install or remove the Windows service, firewall rules and the optional virtual-display / gamepad drivers.",
+        "The Start menu shortcut starts sunshine.exe elevated (UAC prompt); finish the first-run wizard at https://localhost:47990/ afterwards.",
+        "Settings, app list and pairing data live in $dir\\config (persisted across updates)."
     ],
     "architecture": {
         "64bit": {
@@ -22,9 +22,21 @@
     ],
     "shortcuts": [
         [
-            "assets\\gui\\sunshine-gui.exe",
+            "sunshine.exe",
             "Sunshine"
         ]
+    ],
+    "post_install": [
+        "$lnks = @(\"$([Environment]::GetFolderPath('StartMenu'))\\Programs\\Scoop Apps\\Sunshine.lnk\", \"$([Environment]::GetFolderPath('CommonStartMenu'))\\Programs\\Scoop Apps\\Sunshine.lnk\") | Where-Object { Test-Path $_ }",
+        "foreach ($lnk in $lnks) { $bytes = [System.IO.File]::ReadAllBytes($lnk); if (($bytes[0x15] -band 0x20) -eq 0) { $bytes[0x15] = $bytes[0x15] -bor 0x20; [System.IO.File]::WriteAllBytes($lnk, $bytes) } }",
+        "$layers = 'HKCU:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers'",
+        "$null = New-Item -Path $layers -Force",
+        "(Get-ItemProperty -Path $layers).PSObject.Properties | Where-Object { $_.Name -like '*\\foundation-sunshine\\*' -and $_.Name -ne \"$dir\\sunshine.exe\" } | ForEach-Object { Remove-ItemProperty -Path $layers -Name $_.Name -ErrorAction SilentlyContinue }",
+        "Set-ItemProperty -Path $layers -Name \"$dir\\sunshine.exe\" -Value '~ RUNASADMIN' -Type String"
+    ],
+    "post_uninstall": [
+        "$layers = 'HKCU:\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AppCompatFlags\\Layers'",
+        "if (Test-Path $layers) { (Get-ItemProperty -Path $layers).PSObject.Properties | Where-Object { $_.Name -like '*\\foundation-sunshine\\*' } | ForEach-Object { Remove-ItemProperty -Path $layers -Name $_.Name -ErrorAction SilentlyContinue } }"
     ],
     "persist": "config",
     "checkver": {
